@@ -1,17 +1,18 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  await expect(page).toHaveTitle(/Playwright/);
+test.only('Google is there!!', async ({ page }) => {
+  await page.goto('https://www.google.com/');
+  await expect(page).toHaveURL("https://www.google.com/");
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  await page.getByRole('link', { name: 'Get started' }).click();
-  await expect(page).toHaveURL(/.*intro/);
+test.only('Gmail if no account or not signed in', async ({ page }) => {
+  await page.goto('https://www.google.com/');
+  await page.getByRole('link', { name: 'Gmail'}).click();
+  await expect(page).toHaveURL('https://www.google.com/intl/en-US/gmail/about/');
+
 });
 
-test.only('check Java page', async ({ page }) => {
+test('check Java page', async ({ page }) => {
   await page.goto('https://playwright.dev/');
   await page.getByRole('link', { name: 'Get started' }).click();
   await page.getByRole('button', { name: 'Node.js' }).hover();
